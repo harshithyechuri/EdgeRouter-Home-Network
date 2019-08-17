@@ -14,12 +14,10 @@ set interfaces ethernet eth1 vif 20 description 'Guest Network'
 set interfaces ethernet eth1 vif 30 address 10.10.30.1/24
 set interfaces ethernet eth1 vif 30 description 'IoT Network''
 commit
-save
 ```
 
 ***Creating DHCP Server for VLAN's***
 ```
-configure
 set service dhcp-server disabled false
 set service dhcp-server shared-network-name Main-V10
 set service dhcp-server shared-network-name Main-V10 authoritative enable
@@ -49,7 +47,6 @@ commit
 
 *Setting up "Protected Networs"*
 ```
-configure
 set firewall group network-group LAN_NETWORKS description 'Private Network Group'
 set firewall group network-group LAN_NETWORKS network 192.168.0.0/16
 set firewall group network-group LAN_NETWORKS network 172.16.0.0/12
