@@ -27,12 +27,14 @@ set service dhcp-server shared-network-name Main-V10 subnet 10.10.10.0/24 defaul
 set service dhcp-server shared-network-name Main-V10 subnet 10.10.10.0/24 dns-server 8.8.8.8
 set service dhcp-server shared-network-name Main-V10 subnet 10.10.10.0/24 lease 86400
 set service dhcp-server shared-network-name Main-V10 subnet 10.10.10.0/24 start 10.10.10.11 stop 10.10.10.210
+
 set service dhcp-server shared-network-name Guest-V20
 set service dhcp-server shared-network-name Guest-V20 authoritative enable
 set service dhcp-server shared-network-name Guest-V20 subnet 10.10.20.0/24 default-router 10.10.20.1
 set service dhcp-server shared-network-name Guest-V20 subnet 10.10.20.0/24 dns-server 8.8.8.8
 set service dhcp-server shared-network-name Guest-V20 subnet 10.10.20.0/24 lease 86400
 set service dhcp-server shared-network-name Guest-V20 subnet 10.10.20.0/24 start 10.10.20.11 stop 10.10.20.210
+
 set service dhcp-server shared-network-name IoT-V30
 set service dhcp-server shared-network-name IoT-V30 authoritative enable
 set service dhcp-server shared-network-name IoT-V30 subnet 10.10.30.0/24 default-router 10.10.30.1
@@ -42,6 +44,8 @@ set service dhcp-server shared-network-name IoT-V30 subnet 10.10.30.0/24 start 1
 ```
 
 ***Setting up FIREWALL for Guest & IOT VLAN's***
+
+*Setting up "Protected Networs"*
 ```
 configure
 set firewall group network-group LAN_NETWORKS description 'Private Network Group'
