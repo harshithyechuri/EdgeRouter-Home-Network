@@ -54,6 +54,7 @@ set firewall group network-group LAN_NETWORKS network 172.16.0.0/12
 set firewall group network-group LAN_NETWORKS network 10.0.0.0/8
 commit
 ```
+*Setting up rules for GUEST VLAN*
 ```
 set firewall name GUEST_IN
 set firewall name GUEST_IN description 'Guest to Internet' 
@@ -81,7 +82,9 @@ set firewall name GUEST_LOCAL rule 20 description 'Allow DHCP'
 set firewall name GUEST_LOCAL rule 20 log disable
 set firewall name GUEST_LOCAL rule 20 protocol udp
 set firewall name GUEST_LOCAL rule 20 destination port 67
-
+```
+*Setting up rules for IOT VLAN*
+```
 set firewall name IoT_IN
 set firewall name IoT_IN description 'IoT to Internet' 
 set firewall name IoT_IN default-action accept
@@ -109,6 +112,7 @@ set firewall name IoT_LOCAL rule 20 log disable
 set firewall name IoT_LOCAL rule 20 protocol udp
 set firewall name IoT_LOCAL rule 20 destination port 67
 ```
+*Assinging the VLAN interfaces*
 ```
 set interfaces ethernet eth1 vif 20 firewall in name GUEST_IN
 set interfaces ethernet eth1 vif 20 firewall local name GUEST_LOCAL
@@ -119,5 +123,3 @@ commit
 save
 exit
 ```
-
-***
