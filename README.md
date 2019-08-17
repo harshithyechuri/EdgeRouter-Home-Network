@@ -41,6 +41,8 @@ set service dhcp-server shared-network-name IoT-V30 subnet 10.10.30.0/24 default
 set service dhcp-server shared-network-name IoT-V30 subnet 10.10.30.0/24 dns-server 8.8.8.8
 set service dhcp-server shared-network-name IoT-V30 subnet 10.10.30.0/24 lease 86400
 set service dhcp-server shared-network-name IoT-V30 subnet 10.10.30.0/24 start 10.10.30.11 stop 10.10.30.210
+
+commit
 ```
 
 ***Setting up FIREWALL for Guest & IOT VLAN's***
@@ -82,6 +84,7 @@ set firewall name GUEST_LOCAL rule 20 description 'Allow DHCP'
 set firewall name GUEST_LOCAL rule 20 log disable
 set firewall name GUEST_LOCAL rule 20 protocol udp
 set firewall name GUEST_LOCAL rule 20 destination port 67
+commit
 ```
 *Setting up rules for IOT VLAN*
 ```
@@ -111,6 +114,7 @@ set firewall name IoT_LOCAL rule 20 description 'Allow DHCP'
 set firewall name IoT_LOCAL rule 20 log disable
 set firewall name IoT_LOCAL rule 20 protocol udp
 set firewall name IoT_LOCAL rule 20 destination port 67
+commit
 ```
 *Assinging the VLAN interfaces*
 ```
@@ -119,6 +123,7 @@ set interfaces ethernet eth1 vif 20 firewall local name GUEST_LOCAL
 
 set interfaces ethernet eth1 vif 30 firewall in name IoT_IN
 set interfaces ethernet eth1 vif 30 firewall local name IoT_LOCAL
+
 commit
 save
 exit
