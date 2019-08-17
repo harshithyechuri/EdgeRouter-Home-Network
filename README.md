@@ -1,7 +1,7 @@
 # EdgeRouter-Home
 EdgeRouter Config Commands For A Perfect Home Network
 
-# Creating VLAN's for the Network
+** Creating VLAN's for the Network
 ```
 configure
 set interfaces ethernet eth0 description 'Internet (ISP)'
