@@ -1,4 +1,4 @@
-# EdgeRouter-Home
+# EdgeRouter-Home-Network
 EdgeRouter Config Commands For A Perfect Home Network
 
 
