@@ -9,7 +9,6 @@ set interfaces ethernet eth1 vif 30 address 10.10.30.1/24
 set interfaces ethernet eth1 vif 30 description 'IoT Network'
 set interfaces ethernet eth1 vif 40 address 10.10.40.1/24
 commit
-configure
 set service dhcp-server disabled false
 set service dhcp-server shared-network-name Main-V10
 set service dhcp-server shared-network-name Main-V10 authoritative enable
@@ -30,7 +29,6 @@ set service dhcp-server shared-network-name IoT-V30 subnet 10.10.30.0/24 dns-ser
 set service dhcp-server shared-network-name IoT-V30 subnet 10.10.30.0/24 lease 86400
 set service dhcp-server shared-network-name IoT-V30 subnet 10.10.30.0/24 start 10.10.30.11 stop 10.10.30.210
 commit
-configure
 set firewall group network-group LAN_NETWORKS description 'Private Network Group'
 set firewall group network-group LAN_NETWORKS network 192.168.0.0/16
 set firewall group network-group LAN_NETWORKS network 172.16.0.0/12
