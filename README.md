@@ -1,5 +1,5 @@
-# EdgeRouter-Home-Network
-EdgeRouter Config Commands For A Perfect Home Network
+# EdgeRouter-Home-Network (Guest & IoT Isolation)
+EdgeRouter CLI Commands For A Segregated Home Network
 
 ***Switch to Config mode***
 ```
@@ -127,5 +127,4 @@ set interfaces ethernet eth1 vif 30 firewall local name IoT_LOCAL
 
 commit
 save
-exit
 ```
