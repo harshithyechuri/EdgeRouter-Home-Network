@@ -1,10 +1,14 @@
 # EdgeRouter-Home-Network
 EdgeRouter Config Commands For A Perfect Home Network
 
+***Switch to Config mode***
+```
+configure
+```
+
 
 ***Creating VLAN's for the Network***
 ```
-configure
 set interfaces ethernet eth0 description 'Internet (ISP)'
 set interfaces ethernet eth1 description 'Lan Network'
 set interfaces ethernet eth1 vif 10 address 10.10.10.1/24
@@ -14,13 +18,10 @@ set interfaces ethernet eth1 vif 20 description 'Guest Network'
 set interfaces ethernet eth1 vif 30 address 10.10.30.1/24
 set interfaces ethernet eth1 vif 30 description 'IoT Network''
 commit
-save
 ```
 
 ***Creating DHCP Server for VLAN's***
 ```
-configure
-
 set service dhcp-server disabled false
 set service dhcp-server shared-network-name Main-V10
 set service dhcp-server shared-network-name Main-V10 authoritative enable
@@ -44,24 +45,20 @@ set service dhcp-server shared-network-name IoT-V30 subnet 10.10.30.0/24 lease 8
 set service dhcp-server shared-network-name IoT-V30 subnet 10.10.30.0/24 start 10.10.30.11 stop 10.10.30.210
 
 commit
-save
 ```
 
 ***Setting up FIREWALL for Guest & IOT VLAN's***
 
 *Setting up "Protected Networs"*
 ```
-configure
 set firewall group network-group LAN_NETWORKS description 'Private Network Group'
 set firewall group network-group LAN_NETWORKS network 192.168.0.0/16
 set firewall group network-group LAN_NETWORKS network 172.16.0.0/12
 set firewall group network-group LAN_NETWORKS network 10.0.0.0/8
 commit
-save
 ```
 *Setting up rules for GUEST VLAN*
 ```
-configure
 set firewall name GUEST_IN
 set firewall name GUEST_IN description 'Guest to Internet' 
 set firewall name GUEST_IN default-action accept
@@ -89,11 +86,9 @@ set firewall name GUEST_LOCAL rule 20 log disable
 set firewall name GUEST_LOCAL rule 20 protocol udp
 set firewall name GUEST_LOCAL rule 20 destination port 67
 commit
-save
 ```
 *Setting up rules for IOT VLAN*
 ```
-configure
 set firewall name IoT_IN
 set firewall name IoT_IN description 'IoT to Internet' 
 set firewall name IoT_IN default-action accept
@@ -121,11 +116,9 @@ set firewall name IoT_LOCAL rule 20 log disable
 set firewall name IoT_LOCAL rule 20 protocol udp
 set firewall name IoT_LOCAL rule 20 destination port 67
 commit
-save
 ```
 *Assinging the VLAN interfaces*
 ```
-configure
 set interfaces ethernet eth1 vif 20 firewall in name GUEST_IN
 set interfaces ethernet eth1 vif 20 firewall local name GUEST_LOCAL
 
