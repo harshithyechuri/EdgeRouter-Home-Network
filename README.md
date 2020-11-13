@@ -7,7 +7,7 @@ configure
 ```
 
 
-***Creating VLAN's for the Network***
+***Create VLAN's for the Network***
 ```
 set interfaces ethernet eth0 description 'Internet (ISP)'
 set interfaces ethernet eth1 description 'Lan Network'
@@ -20,7 +20,7 @@ set interfaces ethernet eth1 vif 30 description 'IoT Network''
 commit
 ```
 
-***Creating DHCP Server for VLAN's***
+***Create DHCP Server for VLAN's***
 ```
 set service dhcp-server disabled false
 set service dhcp-server shared-network-name Main-V10
@@ -47,9 +47,9 @@ set service dhcp-server shared-network-name IoT-V30 subnet 10.10.30.0/24 start 1
 commit
 ```
 
-***Setting up FIREWALL for Guest & IOT VLAN's***
+***Set up FIREWALL for Guest & IOT VLAN's***
 
-*Setting up "Protected Networs"*
+*Set up "Protected Networs"*
 ```
 set firewall group network-group LAN_NETWORKS description 'Private Network Group'
 set firewall group network-group LAN_NETWORKS network 192.168.0.0/16
@@ -57,7 +57,7 @@ set firewall group network-group LAN_NETWORKS network 172.16.0.0/12
 set firewall group network-group LAN_NETWORKS network 10.0.0.0/8
 commit
 ```
-*Setting up rules for GUEST VLAN*
+*Set up rules for GUEST VLAN*
 ```
 set firewall name GUEST_IN
 set firewall name GUEST_IN description 'Guest to Internet' 
@@ -87,7 +87,7 @@ set firewall name GUEST_LOCAL rule 20 protocol udp
 set firewall name GUEST_LOCAL rule 20 destination port 67
 commit
 ```
-*Setting up rules for IOT VLAN*
+*Set up rules for IOT VLAN*
 ```
 set firewall name IoT_IN
 set firewall name IoT_IN description 'IoT to Internet' 
@@ -117,7 +117,7 @@ set firewall name IoT_LOCAL rule 20 protocol udp
 set firewall name IoT_LOCAL rule 20 destination port 67
 commit
 ```
-*Assinging the VLAN interfaces*
+*Assign the VLAN interfaces*
 ```
 set interfaces ethernet eth1 vif 20 firewall in name GUEST_IN
 set interfaces ethernet eth1 vif 20 firewall local name GUEST_LOCAL
