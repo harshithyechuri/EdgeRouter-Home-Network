@@ -49,7 +49,7 @@ commit
 
 ***Set up FIREWALL for Guest & IOT VLAN's***
 
-*Set up "Protected Networs"*
+*Create Network Group*
 ```
 set firewall group network-group LAN_NETWORKS description 'Private Network Group'
 set firewall group network-group LAN_NETWORKS network 192.168.0.0/16
